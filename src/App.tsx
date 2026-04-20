@@ -36,7 +36,7 @@ const CHAINLINK_GALLERY = [
   },
   {
     key: 'rolls-close',
-    src: asset('assets/barbed-wire-strands.png'),
+    src: asset('assets/chainlink-rolls-close.png'),
     alt: 'चैनलिंक जाळीचा रोल — गॅल्वनाइज्ड स्टील मेश',
     caption: 'जाळी — जवळून',
     fit: 'cover' as const,
