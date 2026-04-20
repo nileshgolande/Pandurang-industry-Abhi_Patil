@@ -15,34 +15,55 @@ const PHONE_PRIMARY = '7264949004'
 const PHONE_SECONDARY = '8380035106'
 const GST = '27CDYPJ0404Q1ZX'
 
-/** बाह्य प्रतिमा URL — स्थानिक assets वापरत नाहीत. */
+/** उत्पादन संदर्भ — वेबपृष्ठ (प्रतिमा नाही). */
 const URL_ORCHARD_CHAINLINK_ROLLS =
   'https://orchardfencing.co.uk/product/chainlink-rolls/'
 
-const IMG_CHAINLINK_ROLLS =
-  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQb-rLvKfSkgGvCgrb-DUoiEbWr1cWx782Tgw&s'
+/** Pexels — उच्च रिझोल्यूशन JPEG (मोफत वापरासाठी उपलब्ध). */
+function pexelsHd(photoId: string, w: number) {
+  return `https://images.pexels.com/photos/${photoId}/pexels-photo-${photoId}.jpeg?auto=compress&cs=tinysrgb&w=${w}&q=90`
+}
 
-const IMG_CHAINLINK_MESH_A =
-  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3GO-d4HPtN2zQfzQa3xjdxjGCucw8rTobOQ&s'
-
-const IMG_CHAINLINK_MESH_B =
-  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxPu85SDpbTSfBQDeJIe5ajPvo-vB8R4pkjA&s'
-
+/** HD चैनलिंक जाळी — प्रात्यक्षिक छायाचित्रे */
 const CHAINLINK_GALLERY = [
   {
-    src: IMG_CHAINLINK_ROLLS,
-    alt: 'चैनलिंक जाळीचे रोल — गॅल्वनाइज्ड स्टील मेश',
-    caption: 'जाळीचे रोल',
+    id: '683402',
+    alt: 'चैनलिंक जाळी — जवळून, दिवसाच्या प्रकाशात (HD)',
+    caption: 'चैनलिंक जाळी — जवळून',
+    page: 'https://www.pexels.com/photo/chain-linked-fence-683402/',
+    credit: 'Min An / Pexels',
   },
   {
-    src: IMG_CHAINLINK_MESH_A,
-    alt: 'चैनलिंक जाळी — जवळून दिसणारा डायमंड मेश',
-    caption: 'जाळी — जवळून',
+    id: '951408',
+    alt: 'सायक्लोन / चैनलिंक जाळी — उच्च दर्जाचे HD छायाचित्र',
+    caption: 'सायक्लोन जाळी',
+    page: 'https://www.pexels.com/photo/cyclone-fence-in-shallow-photography-951408/',
+    credit: 'Travis Saylor / Pexels',
   },
   {
-    src: IMG_CHAINLINK_MESH_B,
-    alt: 'चैनलिंक जाळी — उभी मेश टेक्सचर',
-    caption: 'मेश पॅटर्न',
+    id: '1550131',
+    alt: 'चैनलिंक जाळी — मेश टेक्सचर (HD)',
+    caption: 'जाळी व मेश',
+    page: 'https://www.pexels.com/photo/orange-leaf-on-chainlink-fence-1550131/',
+    credit: 'Brett Sayles / Pexels',
+  },
+] as const
+
+/** HD काटेरी तार — प्रात्यक्षिक छायाचित्रे */
+const BARBED_WIRE_GALLERY = [
+  {
+    id: '274886',
+    alt: 'काटेरी तार — गॅल्वनाइज्ड वायर, HD छायाचित्र',
+    caption: 'काटेरी तार — जवळून',
+    page: 'https://www.pexels.com/photo/grayscale-photo-of-barbed-wire-274886/',
+    credit: 'Pixabay / Pexels',
+  },
+  {
+    id: '3806779',
+    alt: 'काटेरी तार — रोल व सुरक्षा वायर (HD)',
+    caption: 'काटेरी तार — रोल',
+    page: 'https://www.pexels.com/photo/photo-of-barbed-wires-3806779/',
+    credit: 'Markus Spiske / Pexels',
   },
 ] as const
 
@@ -320,8 +341,8 @@ export default function App() {
             <div className="mx-auto max-w-3xl text-center">
               <h2 className="text-3xl font-semibold text-brand sm:text-4xl">उत्पादने</h2>
               <p className="mt-3 text-pretty text-muted sm:text-lg">
-                चैनलिंक जाळी व काटेरी तार — तुमच्या गरजेनुसार मोजमाप व जाडी. खालील गॅलरीतील
-                प्रतिमा बाह्य लिंकवरून लोड होतात; उत्पादन तपशीलासाठी संदर्भ लिंक पहा.
+                चैनलिंक जाळी व काटेरी तार — तुमच्या गरजेनुसार मोजमाप व जाडी. खालील गॅलरीतील HD
+                प्रतिमा Pexels वरून लोड होतात; उत्पादन तपशीलासाठी संदर्भ लिंक पहा.
               </p>
             </div>
 
@@ -331,7 +352,8 @@ export default function App() {
                   चैनलिंक जाळी (साखळी जाळी)
                 </h3>
                 <p className="mx-auto mt-2 max-w-2xl text-center text-sm text-muted">
-                  कम्पाउंड, शेती, प्लॉट, फार्म व इतर ठिकाणी बांधकामासाठी तयार स्टॉक.
+                  कम्पाउंड, शेती, प्लॉट, फार्म व इतर ठिकाणी बांधकामासाठी तयार स्टॉक. खालील HD
+                  प्रात्यक्षिक — चैनलिंक जाळी.
                 </p>
 
                 <div className="mx-auto mt-6 max-w-2xl rounded-2xl border border-brand/20 bg-brand/[0.04] p-4 text-center text-sm text-muted">
@@ -351,42 +373,60 @@ export default function App() {
                 </div>
 
                 <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                  {CHAINLINK_GALLERY.map((item) => (
-                    <figure
-                      key={item.src}
-                      className="group relative overflow-hidden rounded-2xl border border-black/10 bg-zinc-900 shadow-lg ring-1 ring-black/5"
-                    >
-                      <a
-                        href={item.src}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+                  {CHAINLINK_GALLERY.map((item) => {
+                    const src = pexelsHd(item.id, 1920)
+                    const srcSet = `${pexelsHd(item.id, 960)} 960w, ${pexelsHd(item.id, 1280)} 1280w, ${pexelsHd(item.id, 1920)} 1920w, ${pexelsHd(item.id, 2560)} 2560w`
+                    const hdFull = pexelsHd(item.id, 4096)
+                    return (
+                      <figure
+                        key={item.id}
+                        className="group relative overflow-hidden rounded-2xl border border-black/10 bg-zinc-900 shadow-lg ring-1 ring-black/5"
                       >
-                        <img
-                          src={item.src}
-                          alt={item.alt}
-                          className="aspect-[4/5] w-full object-cover transition duration-700 ease-out group-hover:scale-[1.04]"
-                          width={800}
-                          height={1000}
-                          loading="lazy"
-                          decoding="async"
-                          referrerPolicy="no-referrer"
-                        />
-                      </a>
-                      <figcaption className="border-t border-white/10 bg-zinc-950/90 px-3 py-2.5 text-center text-xs text-zinc-300">
-                        {item.caption}
                         <a
-                          href={item.src}
+                          href={hdFull}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="mt-1 flex items-center justify-center gap-1 text-[0.65rem] font-medium text-brand hover:text-white"
+                          className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-brand"
                         >
-                          <ExternalLink className="size-3" aria-hidden />
-                          प्रतिमा लिंक उघडा
+                          <img
+                            src={src}
+                            srcSet={srcSet}
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                            alt={item.alt}
+                            className="aspect-[4/5] w-full object-cover transition duration-700 ease-out group-hover:scale-[1.04]"
+                            width={1920}
+                            height={2400}
+                            loading="lazy"
+                            decoding="async"
+                          />
                         </a>
-                      </figcaption>
-                    </figure>
-                  ))}
+                        <figcaption className="border-t border-white/10 bg-zinc-950/90 px-3 py-2.5 text-center text-xs text-zinc-300">
+                          <span className="font-medium text-white">{item.caption}</span>
+                          <span className="mt-0.5 block text-[0.65rem] text-zinc-500">{item.credit}</span>
+                          <div className="mt-2 flex flex-wrap items-center justify-center gap-2">
+                            <a
+                              href={hdFull}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 text-[0.65rem] font-semibold text-brand hover:text-white"
+                            >
+                              <ExternalLink className="size-3" aria-hidden />
+                              HD मध्ये उघडा
+                            </a>
+                            <a
+                              href={item.page}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 text-[0.65rem] text-zinc-400 hover:text-white"
+                            >
+                              Pexels
+                              <ExternalLink className="size-2.5 opacity-80" aria-hidden />
+                            </a>
+                          </div>
+                        </figcaption>
+                      </figure>
+                    )
+                  })}
                 </div>
               </div>
 
@@ -395,53 +435,67 @@ export default function App() {
                   काटेरी तार (बार्ब्ड वायर)
                 </h3>
                 <p className="mx-auto mt-2 max-w-2xl text-center text-sm text-muted">
-                  सुरक्षा व मजबूतीसाठी — गॅल्वनाइज्ड काटेरी तार होलसेल दरात उपलब्ध.
+                  सुरक्षा व मजबूतीसाठी — गॅल्वनाइज्ड काटेरी तार होलसेल दरात उपलब्ध. खालील HD
+                  प्रात्यक्षिक — काटेरी तार.
                 </p>
                 <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                  <figure className="group overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm">
-                    <a
-                      href={IMG_CHAINLINK_MESH_B}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block"
-                    >
-                      <img
-                        src={IMG_CHAINLINK_MESH_B}
-                        alt="काटेरी तार व जाळी — संदर्भ प्रतिमा (बाह्य लिंक)"
-                        className="aspect-[4/3] w-full object-cover object-center transition duration-500 group-hover:scale-[1.02]"
-                        width={800}
-                        height={600}
-                        loading="lazy"
-                        decoding="async"
-                        referrerPolicy="no-referrer"
-                      />
-                    </a>
-                    <figcaption className="border-t border-black/5 px-4 py-3 text-center text-xs text-muted">
-                      काटेरी तार — तपशील व दरासाठी संपर्क करा
-                    </figcaption>
-                  </figure>
-                  <figure className="group overflow-hidden rounded-2xl border border-black/10 bg-zinc-100 shadow-sm">
-                    <a
-                      href={IMG_CHAINLINK_MESH_A}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block"
-                    >
-                      <img
-                        src={IMG_CHAINLINK_MESH_A}
-                        alt="स्टील मेश व सुरक्षा — संदर्भ प्रतिमा"
-                        className="aspect-[4/3] w-full object-cover object-center transition duration-500 group-hover:scale-[1.03]"
-                        width={800}
-                        height={600}
-                        loading="lazy"
-                        decoding="async"
-                        referrerPolicy="no-referrer"
-                      />
-                    </a>
-                    <figcaption className="border-t border-black/5 bg-white px-4 py-3 text-center text-xs text-muted">
-                      मोठ्या प्रमाणात स्टॉक — त्वरित पुरवठा
-                    </figcaption>
-                  </figure>
+                  {BARBED_WIRE_GALLERY.map((item) => {
+                    const src = pexelsHd(item.id, 1920)
+                    const srcSet = `${pexelsHd(item.id, 960)} 960w, ${pexelsHd(item.id, 1280)} 1280w, ${pexelsHd(item.id, 1920)} 1920w, ${pexelsHd(item.id, 2560)} 2560w`
+                    const hdFull = pexelsHd(item.id, 4096)
+                    return (
+                      <figure
+                        key={item.id}
+                        className="group overflow-hidden rounded-2xl border border-black/10 bg-zinc-900 shadow-md ring-1 ring-black/5"
+                      >
+                        <a
+                          href={hdFull}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+                        >
+                          <img
+                            src={src}
+                            srcSet={srcSet}
+                            sizes="(max-width: 640px) 100vw, 50vw"
+                            alt={item.alt}
+                            className="aspect-[4/3] w-full object-cover object-center transition duration-500 group-hover:scale-[1.03]"
+                            width={1920}
+                            height={1440}
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </a>
+                        <figcaption className="border-t border-white/10 bg-zinc-950/95 px-4 py-3 text-center text-xs text-zinc-300">
+                          <span className="font-medium text-white">{item.caption}</span>
+                          <span className="mt-0.5 block text-[0.65rem] text-zinc-500">{item.credit}</span>
+                          <div className="mt-2 flex flex-wrap items-center justify-center gap-2">
+                            <a
+                              href={hdFull}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 text-[0.65rem] font-semibold text-brand hover:text-white"
+                            >
+                              <ExternalLink className="size-3" aria-hidden />
+                              HD मध्ये उघडा
+                            </a>
+                            <a
+                              href={item.page}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 text-[0.65rem] text-zinc-400 hover:text-white"
+                            >
+                              Pexels
+                              <ExternalLink className="size-2.5 opacity-80" aria-hidden />
+                            </a>
+                          </div>
+                          <p className="mt-2 text-[0.65rem] text-zinc-500">
+                            दर व मोजमापासाठी फोन / WhatsApp करा.
+                          </p>
+                        </figcaption>
+                      </figure>
+                    )
+                  })}
                 </div>
               </div>
             </div>
@@ -548,7 +602,16 @@ export default function App() {
             </div>
           </div>
           <p className="mt-10 border-t border-white/10 pt-6 text-center text-[0.7rem] leading-relaxed text-zinc-500">
-            गॅलरीतील काही प्रतिमा बाह्य URL वरून लोड होतात; संदर्भ:{' '}
+            HD गॅलरीतील चैनलिंक व काटेरी तार प्रतिमा{' '}
+            <a
+              href="https://www.pexels.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-zinc-400 underline decoration-zinc-600 underline-offset-2 hover:text-zinc-300"
+            >
+              Pexels
+            </a>{' '}
+            वरून. उत्पादन संदर्भ:{' '}
             <a
               href={URL_ORCHARD_CHAINLINK_ROLLS}
               target="_blank"
